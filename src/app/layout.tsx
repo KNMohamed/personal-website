@@ -1,16 +1,45 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import localFont from 'next/font/local';
+
 import "./globals.css";
 import { LenisProvider} from "./providers/lenis-provider";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+// Define your font, specifying paths to your font files and their properties
+const neueMontreal = localFont({
+  src: [
+    {
+      path: '../../public/fonts/PPNeueMontreal-Thin.otf',
+      weight: '100', // Or a suitable thin weight like '200'
+      style: 'normal',
+    },
+    {
+      path: '../../public/fonts/PPNeueMontreal-Book.otf',
+      weight: '400', // A lighter weight, often referred to as "Book" or "Light"
+      style: 'normal',
+    },
+    {
+      path: '../../public/fonts/PPNeueMontreal-Medium.otf',
+      weight: '500', // Medium weight
+      style: 'normal',
+    },
+    {
+      path: '../../public/fonts/PPNeueMontreal-Bold.otf',
+      weight: '700', // Bold weight
+      style: 'normal',
+    },
+    {
+      path: '../../public/fonts/PPNeueMontreal-Italic.otf',
+      weight: '400', // Italic usually matches the regular weight, or a specific weight if it's a bold italic etc.
+      style: 'italic',
+    },
+    {
+      path: '../../public/fonts/PPNeueMontreal-SemiBoldItalic.otf',
+      weight: '600', // SemiBold weight
+      style: 'italic', // Italic style
+    },
+  ],
+  variable: '--font-neue-montreal',
 });
 
 export const metadata: Metadata = {
@@ -26,7 +55,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${neueMontreal.variable} antialiased`}
       >
         <LenisProvider>{children}</LenisProvider>
       </body>

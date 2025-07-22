@@ -24,6 +24,12 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-neue-montreal);
   --font-mono: var(--font-neue-montreal);
+  /* 5 Vibrant palette */
+  --color-primary: #868b96;
+  --color-secondary: #878593;
+  --color-tertiary: #807a84;
+  --color-quaternary: #677f8c;
+  --color-quinary: #4a6b69;
 }
 
 @media (prefers-color-scheme: dark) {

@@ -46,7 +46,7 @@ export default function Home() {
       <section
         ref={sectionRef}
         id="about"
-        className="h-screen bg-neutral-200 flex items-center justify-center relative overflow-hidden rounded-lg shadow-lg p-8"
+        className="h-screen bg-primary flex items-center justify-center relative overflow-hidden shadow-lg p-8"
       >
         <div
           ref={boxRef}
@@ -57,7 +57,7 @@ export default function Home() {
       </section>
 
       {/* Another spacer */}
-      <section className="h-screen flex items-center justify-center bg-yellow-200 text-4xl font-bold rounded-lg shadow-lg m-4 p-8">
+      <section className="h-screen flex items-center justify-center bg-stone-500 text-4xl font-bold rounded-lg shadow-lg m-4 p-8">
         <h1>More Content Below</h1>
       </section>
     </div>

@@ -29,7 +29,7 @@ const HeroSection = () => {
     // Animate gradient background
     const gradientTl = gsap.timeline({ repeat: -1, yoyo: true });
     gradientTl.to(gradientRef.current, {
-      backgroundPosition: '100% 50%',
+      backgroundPosition: '90% 50%',
       duration: 4,
       ease: 'none'
     });
@@ -101,7 +101,7 @@ const HeroSection = () => {
         ref={gradientRef}
         className="absolute inset-0 z-0"
         style={{
-          background: 'linear-gradient(45deg, #f3f4f6, #d1d5db, #9ca3af,rgb(138, 144, 158),rgb(110, 120, 135),rgb(100, 110, 125),rgb(78, 87, 100))',
+          background: 'linear-gradient(45deg, #f3f4f6, #d1d5db, #9ca3af,rgb(148, 156, 175),rgb(150, 152, 155),rgb(150, 152, 155),rgb(150, 152, 155))',
           backgroundSize: '400% 400%',
           backgroundPosition: '0% 50%'
         }}
@@ -151,20 +151,20 @@ const HeroSection = () => {
           </div>
         </h1>
         <div className="text-center max-w-4xl">
-          <p className="text-lg md:text-xl mb-8 text-neutral-100">
+          <p className="text-xl md:text-2xl mb-8 text-black">
             I build exceptional digital experiences with modern web
             technologies.
           </p>
           <div className="flex justify-center gap-4">
             <a
               href="#contact"
-              className="px-6 py-3 bg-white text-neutral-600 font-medium rounded-lg hover:bg-neutral-50 transition-colors"
+              className="px-6 py-3 bg-quaternary text-white font-medium rounded-lg hover:bg-quinary transition-colors"
             >
               Get In Touch
             </a>
             <a
               href="#work"
-              className="px-6 py-3 border-2 border-white text-neutral-200 font-medium rounded-lg hover:bg-neutral-50 transition-colors"
+              className="px-6 py-3 border-2 border-quaternary text-white font-medium rounded-lg hover:bg-quaternary transition-colors"
             >
               View My Work
             </a>

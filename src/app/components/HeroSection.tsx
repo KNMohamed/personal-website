@@ -12,11 +12,10 @@ const HeroSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const typedRef = useRef<HTMLSpanElement>(null);
   const cursorRef = useRef<HTMLSpanElement>(null);
-  const gradientRef = useRef<HTMLDivElement>(null);
   const [isTypingComplete, setIsTypingComplete] = React.useState(false);
 
   useEffect(() => {
-    if (!headerRef.current || !sectionRef.current || !gradientRef.current) return;
+    if (!headerRef.current || !sectionRef.current) return;
 
     // Set initial styles for the header
     gsap.set(headerRef.current, {
@@ -25,14 +24,6 @@ const HeroSection = () => {
       left: '2rem',
       zIndex: 50,
       opacity: 1,
-    });
-
-    // Animate gradient background
-    const gradientTl = gsap.timeline({ repeat: -1, yoyo: true });
-    gradientTl.to(gradientRef.current, {
-      backgroundPosition: '90% 50%',
-      duration: 4,
-      ease: 'none'
     });
 
     // Create the scroll animation
@@ -97,17 +88,9 @@ const HeroSection = () => {
       ref={sectionRef}
       className="relative h-screen text-white p-8 overflow-hidden"
     >
-      {/* Animated Gradient Background */}
       <div 
-        ref={gradientRef}
         className="absolute inset-0 z-0"
-        style={{
-          background: 'linear-gradient(45deg, #f3f4f6, #d1d5db, #9ca3af,rgb(148, 156, 175),rgb(150, 152, 155),rgb(150, 152, 155),rgb(150, 152, 155))',
-          backgroundSize: '400% 400%',
-          backgroundPosition: '0% 50%'
-        }}
       />
-      {/* Fixed Header */}
       <div ref={headerRef} className="text-2xl font-medium text-black">
         Full Stack Software Engineer
       </div>

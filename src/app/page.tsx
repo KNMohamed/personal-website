@@ -8,10 +8,20 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 export default function Home() {
   const sectionRef = useRef(null);
   const boxRef = useRef(null);
+  const gradientRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    if (!gradientRef.current) return;
     // Ensure ScrollTrigger is registered if not already
     gsap.registerPlugin(ScrollTrigger);
+
+    // Animate gradient background
+    const gradientTl = gsap.timeline({ repeat: -1, yoyo: true });
+    gradientTl.to(gradientRef.current, {
+      backgroundPosition: '90% 50%',
+      duration: 4,
+      ease: 'none'
+    });
 
     if (sectionRef.current && boxRef.current) {
       gsap.to(boxRef.current, {
@@ -38,7 +48,15 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="min-h-[200vh] bg-gray-100 font-sans text-gray-800">
+    <div 
+      ref={gradientRef} 
+      className="min-h-[200vh] font-sans text-gray-800"
+      style={{
+        background: 'linear-gradient(45deg, #f3f4f6, #d1d5db, #9ca3af,rgb(148, 156, 175),rgb(150, 152, 155),rgb(150, 152, 155),rgb(150, 152, 155))',
+        backgroundSize: '400% 400%',
+        backgroundPosition: '0% 50%'
+      }}
+    >
       {/* Spacer to allow scrolling */}
       <HeroSection />
       <hr id="about-section" className="opacity-0" />
@@ -46,7 +64,7 @@ export default function Home() {
       <section
         ref={sectionRef}
         id="about"
-        className="h-screen bg-primary flex items-center justify-center relative overflow-hidden shadow-lg p-8"
+        className="h-screen flex items-center justify-center relative overflow-hidden p-8"
       >
         <div
           ref={boxRef}
@@ -57,7 +75,7 @@ export default function Home() {
       </section>
 
       {/* Another spacer */}
-      <section className="h-screen flex items-center justify-center bg-stone-500 text-4xl font-bold rounded-lg shadow-lg m-4 p-8">
+      <section className="h-screen flex items-center justify-center text-4xl font-bold rounded-lg shadow-lg m-4 p-8">
         <h1>More Content Below</h1>
       </section>
     </div>

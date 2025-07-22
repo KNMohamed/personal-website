@@ -92,7 +92,7 @@ const HeroSection = () => {
         className="absolute inset-0 z-0"
       />
       <div ref={headerRef} className="text-2xl font-medium text-black">
-        Full Stack Software Engineer
+        Senior Full Stack Software Engineer
       </div>
 
       <div className="flex flex-col items-center justify-end h-full pb-24 relative z-10">
@@ -107,37 +107,52 @@ const HeroSection = () => {
           <div className="flex flex-col w-full">
             <span className="text-4xl md:text-5xl mb-2">Hello my name is,</span>
             <div className="relative w-full">
-              <span className="text-6xl md:text-8xl">
+              <div className="relative inline-block">
+                <span className="text-6xl md:text-8xl">
+                  <span 
+                    ref={typedRef} 
+                    className="inline-block"
+                    style={{
+                      background: 'linear-gradient(to right, #525252, rgba(0, 0, 0, 1.0))',
+                      backgroundClip: 'text',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      position: 'relative',
+                      zIndex: 1
+                    }}
+                  />
+                  <span 
+                    ref={cursorRef}
+                    className="typed-cursor text-6xl md:text-8xl"
+                    style={{
+                      display: isTypingComplete ? 'none' : 'inline-block',
+                      opacity: isTypingComplete ? 0 : 1,
+                      background: 'linear-gradient(to right, #525252, rgba(0, 0, 0, 1.0))',
+                      backgroundClip: 'text',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      position: 'relative',
+                      zIndex: 1
+                    }}
+                  >|</span>
+                </span>
                 <span 
-                  ref={typedRef} 
-                  className="inline-block"
+                  className="absolute left-0 h-2 md:h-3 bg-gradient-to-r from-tertiary to-quinary"
                   style={{
-                    background: 'linear-gradient(to right, #525252, rgba(0, 0, 0, 1.0))',
-                    backgroundClip: 'text',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent'
+                    bottom: '-0.5rem',
+                    width: isTypingComplete ? '100%' : '0%',
+                    transition: 'width 0.3s ease-in-out',
+                    borderRadius: '2px',
+                    zIndex: 2
                   }}
                 />
-                <span 
-                  ref={cursorRef}
-                  className="typed-cursor text-6xl md:text-8xl"
-                  style={{
-                    display: isTypingComplete ? 'none' : 'inline-block',
-                    opacity: isTypingComplete ? 0 : 1,
-                    background: 'linear-gradient(to right, #525252, rgba(0, 0, 0, 1.0))',
-                    backgroundClip: 'text',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent'
-                  }}
-                >|</span>
-              </span>
+              </div>
             </div>
           </div>
         </h1>
         <div className="text-center max-w-4xl">
           <p className="text-lg md:text-3xl mb-8 text-black">
-            I build exceptional digital experiences with modern web
-            technologies.
+            Over 7 years of experience building scalable, cloud-native digital experiences with modern web technologies.
           </p>
           <div className="flex justify-center gap-4">
             <Button asChild size="lg">

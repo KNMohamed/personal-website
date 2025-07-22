@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Typed from 'typed.js';
+import { Button } from "@/components/ui/button";
 
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
@@ -151,23 +152,27 @@ const HeroSection = () => {
           </div>
         </h1>
         <div className="text-center max-w-4xl">
-          <p className="text-xl md:text-2xl mb-8 text-black">
+          <p className="text-lg md:text-3xl mb-8 text-black">
             I build exceptional digital experiences with modern web
             technologies.
           </p>
           <div className="flex justify-center gap-4">
-            <a
-              href="#contact"
-              className="px-6 py-3 bg-quaternary text-white font-medium rounded-lg hover:bg-quinary transition-colors"
-            >
-              Get In Touch
-            </a>
-            <a
-              href="#work"
-              className="px-6 py-3 border-2 border-quaternary text-white font-medium rounded-lg hover:bg-quaternary transition-colors"
-            >
-              View My Work
-            </a>
+            <Button asChild size="lg">
+                <a
+                href="#contact"
+                className="px-8 py-4 bg-quaternary text-white font-medium rounded-lg hover:bg-quinary transition-colors"
+                >
+                Get In Touch
+                </a>
+            </Button>
+            <Button asChild size="lg">
+                <a
+                href="#work"
+                className="px-8 py-4 border-2 border-quaternary text-white font-medium rounded-lg hover:bg-quaternary transition-colors"
+                >
+                View My Work
+                </a>
+            </Button>
           </div>
         </div>
         <button 

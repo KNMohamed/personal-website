@@ -22,7 +22,7 @@ export default function Home() {
         ease: 'power2.inOut',
         scrollTrigger: {
           trigger: sectionRef.current, // When this section enters/exits the viewport
-          start: 'top center', // Animation starts when the top of the trigger hits the center of the viewport
+          start: 'top', // Animation starts when the top of the trigger hits the center of the viewport
           end: 'bottom center', // Animation ends when the bottom of the trigger hits the center of the viewport
           scrub: true, // Smoothly link animation progress to scroll position
           markers: false, // Set to true for debugging scroll positions
@@ -41,15 +41,16 @@ export default function Home() {
     <div className="min-h-[200vh] bg-gray-100 font-sans text-gray-800">
       {/* Spacer to allow scrolling */}
       <HeroSection />
-
+      <hr id="about-section" className="opacity-0" />
       {/* Section with the animated element */}
       <section
         ref={sectionRef}
-        className="h-screen bg-green-200 flex items-center justify-center relative overflow-hidden rounded-lg shadow-lg m-4 p-8"
+        id="about"
+        className="h-screen bg-neutral-200 flex items-center justify-center relative overflow-hidden rounded-lg shadow-lg p-8"
       >
         <div
           ref={boxRef}
-          className="w-48 h-48 bg-purple-500 flex items-center justify-center text-white text-2xl font-bold rounded-lg shadow-xl"
+          className="w-48 h-48 bg-white flex items-center justify-center text-neutral-800 text-2xl font-bold rounded-lg shadow-xl"
         >
           Animated Box
         </div>

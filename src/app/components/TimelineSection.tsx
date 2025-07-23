@@ -4,6 +4,7 @@ import React, { useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import TimelineItem, { TimelineItemProps } from './TimelineItem';
+import TechMarquee from './TechMarquee';
 
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
@@ -110,9 +111,10 @@ const TimelineSection = () => {
     <section
       ref={sectionRef}
       id="experience"
-      className="relative min-h-screen bg-white py-20 px-4 overflow-hidden"
+      className="relative bg-white overflow-hidden"
     >
-      <div className="max-w-6xl mx-auto">
+      <TechMarquee />
+      <div className="max-w-6xl mx-auto py-20 px-4">
         <h2 className="text-4xl md:text-6xl font-bold mb-16 text-center text-black">
           Work Experience
         </h2>

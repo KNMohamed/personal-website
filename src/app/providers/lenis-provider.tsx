@@ -15,7 +15,6 @@ export function LenisProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     if (lenis) {
       lenisRef.current = lenis;
-      console.log('Lenis initialized. ScrollTrigger root element:', lenis.rootElement);
 
       // Set up ScrollTrigger to use Lenis for smooth scrolling
       // This is crucial for ScrollTrigger to work correctly with Lenis

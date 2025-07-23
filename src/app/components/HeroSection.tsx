@@ -4,7 +4,8 @@ import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Typed from 'typed.js';
-import { Button } from "@/components/ui/button";
+import { Button } from '@/components/ui/button';
+import BubbleContainer from './Bubble/BubbleContainer';
 
 // Register ScrollTrigger plugin
 
@@ -17,7 +18,12 @@ const HeroSection = () => {
   const [isTypingComplete, setIsTypingComplete] = React.useState(false);
 
   useEffect(() => {
-    if (!headerContainerRef.current || !headerTextRef.current || !sectionRef.current) return;
+    if (
+      !headerContainerRef.current ||
+      !headerTextRef.current ||
+      !sectionRef.current
+    )
+      return;
     // Set initial styles for the header container
     // This container will be fixed
     gsap.set(headerContainerRef.current, {
@@ -31,7 +37,8 @@ const HeroSection = () => {
 
     // Create the scroll animation for the header text only
     // The trigger is the HeroSection itself, but we animate the text
-    gsap.to(headerTextRef.current, { // Animate the text element, not the fixed container
+    gsap.to(headerTextRef.current, {
+      // Animate the text element, not the fixed container
       opacity: 0,
       y: -50,
       scrollTrigger: {
@@ -65,7 +72,7 @@ const HeroSection = () => {
             void cursorRef.current.offsetWidth; // Trigger reflow
             cursorRef.current.style.animation = 'blink 0.7s infinite';
           }
-        }
+        },
       });
     }
 
@@ -76,7 +83,7 @@ const HeroSection = () => {
       }
     };
   }, []);
-  
+
   return (
     <section
       ref={sectionRef}
@@ -89,59 +96,68 @@ const HeroSection = () => {
         </div>
       </div>
 
-      <div 
-        className="absolute inset-0 z-0"
+      {/* Bubble animation */}
+      <BubbleContainer
+        maxBubbles={30}
+        generationRate={300}
+        className="absolute inset-0"
       />
-      
+
+      {/* Content */}
       <div className="flex flex-col items-center justify-end h-full pb-24 relative z-10">
-        <h1 
-            className="absolute text-8xl top-1/4 md:top-2/5 md:-translate-y-1/2 w-full max-w-[90%]" 
-            style= {{
-                background: 'linear-gradient(to right, #525252,rgba(0, 0, 0, 1.0))',
-                backgroundClip: 'text', /* Clip the background to the text shape */
-                color: 'transparent' /* Fallback for browsers that don't support -webkit-text-fill-color */
-            }}
+        <h1
+          className="absolute text-8xl top-1/4 md:top-2/5 md:-translate-y-1/2 w-full max-w-[90%]"
+          style={{
+            background: 'linear-gradient(to right, #525252,rgba(0, 0, 0, 1.0))',
+            backgroundClip: 'text' /* Clip the background to the text shape */,
+            color:
+              'transparent' /* Fallback for browsers that don't support -webkit-text-fill-color */,
+          }}
         >
           <div className="flex flex-col w-full">
             <span className="text-4xl md:text-5xl mb-2">Hello my name is,</span>
             <div className="relative w-full">
               <div className="relative inline-block">
                 <span className="text-6xl md:text-8xl">
-                  <span 
-                    ref={typedRef} 
+                  <span
+                    ref={typedRef}
                     className="inline-block"
                     style={{
-                      background: 'linear-gradient(to right, #525252, rgba(0, 0, 0, 1.0))',
+                      background:
+                        'linear-gradient(to right, #525252, rgba(0, 0, 0, 1.0))',
                       backgroundClip: 'text',
                       WebkitBackgroundClip: 'text',
                       WebkitTextFillColor: 'transparent',
                       position: 'relative',
-                      zIndex: 1
+                      zIndex: 1,
                     }}
                   />
-                  <span 
+                  <span
                     ref={cursorRef}
                     className="typed-cursor text-6xl md:text-8xl"
                     style={{
                       display: isTypingComplete ? 'none' : 'inline-block',
                       opacity: isTypingComplete ? 0 : 1,
-                      background: 'linear-gradient(to right, #525252, rgba(0, 0, 0, 1.0))',
+                      background:
+                        'linear-gradient(to right, #525252, rgba(0, 0, 0, 1.0))',
                       backgroundClip: 'text',
                       WebkitBackgroundClip: 'text',
                       WebkitTextFillColor: 'transparent',
                       position: 'relative',
-                      zIndex: 1
+                      zIndex: 1,
                     }}
-                  >|</span>
+                  >
+                    |
+                  </span>
                 </span>
-                <span 
+                <span
                   className="absolute left-0 h-2 md:h-3 bg-gradient-to-r from-tertiary to-quinary"
                   style={{
                     bottom: '-0.5rem',
                     width: isTypingComplete ? '100%' : '0%',
                     transition: 'width 0.3s ease-in-out',
                     borderRadius: '2px',
-                    zIndex: 2
+                    zIndex: 2,
                   }}
                 />
               </div>
@@ -150,28 +166,29 @@ const HeroSection = () => {
         </h1>
         <div className="text-center max-w-4xl">
           <p className="text-lg md:text-3xl mb-8 text-black">
-            Over 7 years of experience building scalable, cloud-native digital experiences with modern web technologies.
+            Over 7 years of experience building scalable, cloud-native digital
+            experiences with modern web technologies.
           </p>
           <div className="flex justify-center gap-4">
             <Button asChild size="lg">
-                <a
+              <a
                 href="#contact"
                 className="px-8 py-4 bg-quaternary text-white font-medium rounded-lg hover:bg-quinary transition-colors"
-                >
+              >
                 Get In Touch
-                </a>
+              </a>
             </Button>
             <Button asChild size="lg">
-                <a
+              <a
                 href="#work"
                 className="px-8 py-4 border-2 border-quaternary text-white font-medium rounded-lg hover:bg-quaternary transition-colors"
-                >
+              >
                 View My Work
-                </a>
+              </a>
             </Button>
           </div>
         </div>
-        <button 
+        <button
           onClick={() => {
             const nextSection = document.getElementById('about');
             if (nextSection) {

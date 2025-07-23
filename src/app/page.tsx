@@ -12,41 +12,40 @@ export default function Home() {
 
   useEffect(() => {
     if (!gradientRef.current) return;
-    
-    gsap.registerPlugin(ScrollTrigger);
 
     // Animate gradient background
     const gradientTl = gsap.timeline({ repeat: -1, yoyo: true });
     gradientTl.to(gradientRef.current, {
       backgroundPosition: '90% 50%',
       duration: 4,
-      ease: 'none'
+      ease: 'none',
     });
 
     // Cleanup function
     return () => {
       gradientTl.kill();
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
   }, []);
 
   return (
     <div className="min-h-screen font-sans text-gray-800">
       {/* Gradient background */}
-      <div 
-        ref={gradientRef} 
+      <div
+        ref={gradientRef}
         className="fixed inset-0 -z-10"
         style={{
-          background: 'linear-gradient(45deg, #f3f4f6, #d1d5db, #9ca3af, #949caf, #96989b)',
+          background:
+            'linear-gradient(45deg, #f3f4f6, #d1d5db, #9ca3af, #949caf, #96989b)',
           backgroundSize: '400% 400%',
-          backgroundPosition: '0% 50%'
+          backgroundPosition: '0% 50%',
         }}
       />
-      
+
       <main>
         <HeroSection />
         <TimelineSection />
-        
+
         {/* About Section */}
         <section
           ref={sectionRef}

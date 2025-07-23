@@ -15,7 +15,7 @@ export default function Home() {
     // Animate gradient background
     const gradientTl = gsap.timeline({ repeat: -1, yoyo: true });
     gradientTl.to(gradientRef.current, {
-      backgroundPosition: '90% 50%',
+      backgroundPosition: '100% 20%',
       duration: 4,
       ease: 'none',
     });
@@ -35,7 +35,7 @@ export default function Home() {
         className="fixed inset-0 -z-10"
         style={{
           background:
-            'linear-gradient(45deg, #f3f4f6, #d1d5db, #9ca3af, #949caf, #96989b)',
+            'linear-gradient(45deg, #f3f4f6, #d1d5db,rgb(166, 172, 181),rgb(190, 180, 180),rgb(162, 165, 171))',
           backgroundSize: '400% 400%',
           backgroundPosition: '0% 50%',
         }}

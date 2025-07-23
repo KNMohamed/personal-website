@@ -6,8 +6,6 @@ interface BubbleComponentProps {
 }
 
 const Bubble: React.FC<BubbleComponentProps> = ({ bubble }) => {
-  console.log('Rendering bubble:', bubble.id, bubble);
-
   return (
     <div
       className="absolute rounded-full bubble-float backdrop-blur-lg"

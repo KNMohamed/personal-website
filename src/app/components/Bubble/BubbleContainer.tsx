@@ -34,26 +34,21 @@ const BubbleContainer: React.FC<BubbleContainerProps> = ({
       duration: Math.random() * 4 + 5,
       delay: 2,
     };
-    console.log('Generated bubble:', bubble);
     return bubble;
   }, [colors]);
 
   useEffect(() => {
-    console.log('Setting up bubble generation interval');
     const interval = setInterval(() => {
       setBubbles((prev) => {
-        console.log('Current bubbles count:', prev.length);
         if (prev.length >= maxBubbles) {
           return prev;
         }
         const newBubble = generateBubble();
-        console.log('Adding new bubble:', newBubble);
         return [...prev, newBubble];
       });
     }, generationRate);
 
     return () => {
-      console.log('Cleaning up interval');
       clearInterval(interval);
     };
   }, [generateBubble, maxBubbles, generationRate]);
@@ -64,7 +59,6 @@ const BubbleContainer: React.FC<BubbleContainerProps> = ({
 
     const timeouts = bubbles.map((bubble) => {
       return setTimeout(() => {
-        console.log('Removing bubble:', bubble.id);
         setBubbles((prev) => prev.filter((b) => b.id !== bubble.id));
       }, bubble.duration * 1000);
     });
@@ -73,8 +67,6 @@ const BubbleContainer: React.FC<BubbleContainerProps> = ({
       timeouts.forEach((timeout) => clearTimeout(timeout));
     };
   }, [bubbles]);
-
-  console.log('Rendering bubbles:', bubbles.length);
 
   return (
     <div

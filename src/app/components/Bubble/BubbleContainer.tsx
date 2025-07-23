@@ -22,9 +22,9 @@ const BubbleContainer: React.FC<BubbleContainerProps> = ({
   className = '',
 }) => {
   const [bubbles, setBubbles] = useState<BubbleProps[]>([]);
-  const colors = ['#507472', '#d1d5db', '#89838d'];
 
   const generateBubble = useCallback((): BubbleProps => {
+    const colors = ['#507472', '#d1d5db', '#89838d'];
     const bubble = {
       id: Math.random().toString(36).substring(2, 11),
       x: Math.random() * 98 + 1,
@@ -35,7 +35,7 @@ const BubbleContainer: React.FC<BubbleContainerProps> = ({
       delay: 2,
     };
     return bubble;
-  }, [colors]);
+  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {

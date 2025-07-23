@@ -4,13 +4,14 @@ import { ReactLenis, useLenis } from 'lenis/react';
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Lenis from 'lenis';
 
 // Register ScrollTrigger plugin with GSAP
 gsap.registerPlugin(ScrollTrigger);
 
 export function LenisProvider({ children }: { children: React.ReactNode }) {
   const lenis = useLenis(); // Get the Lenis instance
-  const lenisRef = useRef<any>(null);
+  const lenisRef = useRef<Lenis | undefined>(null);
 
   useEffect(() => {
     if (lenis) {

@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState, CSSProperties } from 'react';
+import { useEffect, useRef, useState, useMemo, CSSProperties } from 'react';
 import styles from './bubble-background.module.css'; // Import the CSS Module
 
 // Define the type for a single bubble object in our state
@@ -10,10 +10,11 @@ interface Bubble {
 }
 
 const BubbleBackground = () => {
-  const bubbleColors = ['#c5a5ab', '#e3e2dd', '#87a6c0'];
   const numBubbles = 30; // Based on your HTML, you have 30 bubbles
   const [bubbles, setBubbles] = useState<Bubble[]>([]);
   const containerRef = useRef<HTMLDivElement>(null);
+
+  const bubbleColors = useMemo(() => ['#c5a5ab', '#e3e2dd', '#87a6c0'], []);
 
   // Function to check if an element is offscreen
   const isOffscreen = (element: HTMLElement | null) => {
@@ -94,7 +95,7 @@ const BubbleBackground = () => {
       }
     }, 50); // Check every 50 milliseconds
     return () => clearInterval(interval);
-  }, []);
+  }, [bubbleColors]);
 
   return (
     <div className={styles.backgroundAnimationContainer} ref={containerRef}>

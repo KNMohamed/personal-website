@@ -104,7 +104,7 @@ const HeroSection = () => {
       />
 
       {/* Content */}
-      <div className="flex flex-col items-center justify-end h-full pb-24 relative z-10">
+      <div className="flex flex-col items-center justify-end h-full pb-16 md:pb-24 relative z-10 px-4 sm:px-6 w-full">
         <h1
           className="absolute text-8xl top-1/4 md:top-2/5 md:-translate-y-1/2 w-full max-w-[90%]"
           style={{
@@ -164,16 +164,16 @@ const HeroSection = () => {
             </div>
           </div>
         </h1>
-        <div className="text-center max-w-4xl">
-          <p className="text-lg md:text-3xl mb-8 text-black">
+        <div className="text-center w-full max-w-4xl px-4">
+          <p className="text-lg md:text-3xl mb-6 sm:mb-8 text-black">
             Over 7 years of experience building scalable, cloud-native digital
             experiences with modern web technologies.
           </p>
-          <div className="flex justify-center gap-4">
+          <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 w-full">
             <Button asChild size="lg">
               <a
                 href="#contact"
-                className="px-8 py-4 bg-quaternary text-white font-medium rounded-lg hover:bg-quinary transition-colors"
+                className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-quaternary text-white font-medium rounded-lg hover:bg-quinary transition-colors text-sm sm:text-base"
               >
                 Get In Touch
               </a>
@@ -181,7 +181,7 @@ const HeroSection = () => {
             <Button asChild size="lg">
               <a
                 href="#work"
-                className="px-8 py-4 border-2 border-quaternary text-white font-medium rounded-lg hover:bg-quaternary transition-colors"
+                className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 border-2 border-quaternary text-white font-medium rounded-lg hover:bg-quaternary transition-colors text-sm sm:text-base"
               >
                 View My Work
               </a>

@@ -22,25 +22,17 @@ const BubbleContainer: React.FC<BubbleContainerProps> = ({
   className = '',
 }) => {
   const [bubbles, setBubbles] = useState<BubbleProps[]>([]);
-  const colors = [
-    '#3B82F6', // Blue
-    '#8B5CF6', // Purple
-    '#EC4899', // Pink
-    '#06B6D4', // Cyan
-    '#10B981', // Emerald
-    '#F59E0B', // Amber
-  ];
+  const colors = ['#507472', '#d1d5db', '#89838d'];
 
   const generateBubble = useCallback((): BubbleProps => {
     const bubble = {
       id: Math.random().toString(36).substring(2, 11),
-      x: Math.random() * 90 + 5, // 5-95% to avoid edges
+      x: Math.random() * 98 + 1,
       y: 110, // Start from bottom
-      size: Math.random() * 80 + 60, // 20-50px
+      size: Math.random() * 120 + 60, // 20-50px
       color: colors[Math.floor(Math.random() * colors.length)],
-      opacity: Math.random() * 0.15 + 0.05, // 0.3-0.8
-      duration: Math.random() * 5 + 8, // 8-13 seconds
-      delay: 0,
+      duration: Math.random() * 4 + 5, // 8-13 seconds
+      delay: 2,
     };
     console.log('Generated bubble:', bubble);
     return bubble;
@@ -91,10 +83,6 @@ const BubbleContainer: React.FC<BubbleContainerProps> = ({
       {bubbles.map((bubble) => (
         <Bubble key={bubble.id} bubble={bubble} />
       ))}
-      {/* Debug info */}
-      <div className="absolute top-4 left-4 text-white text-sm bg-black/50 p-2 rounded pointer-events-auto">
-        Bubbles: {bubbles.length}
-      </div>
     </div>
   );
 };

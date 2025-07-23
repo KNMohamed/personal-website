@@ -17,11 +17,10 @@ const Bubble: React.FC<BubbleComponentProps> = ({ bubble }) => {
         width: `${bubble.size}px`,
         height: `${bubble.size}px`,
         backgroundColor: bubble.color,
-        opacity: bubble.opacity,
         animationDuration: `${bubble.duration}s`,
         transform: 'translateY(0)',
         zIndex: 10,
-        filter: 'blur(2px)',
+        filter: 'blur(8px)',
         boxShadow: `0 0 ${bubble.size * 0.3}px ${bubble.color}40`,
       }}
     />

@@ -4,7 +4,6 @@ export interface BubbleProps {
   y: number;
   size: number;
   color: string;
-  opacity: number;
   duration: number;
   delay: number;
 }

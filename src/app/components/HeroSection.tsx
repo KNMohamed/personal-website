@@ -6,6 +6,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Typed from 'typed.js';
 import { Button } from '@/components/ui/button';
 import BubbleContainer from './Bubble/BubbleContainer';
+import Image from 'next/image';
 
 // Register ScrollTrigger plugin
 
@@ -15,6 +16,7 @@ const HeroSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const typedRef = useRef<HTMLSpanElement>(null);
   const cursorRef = useRef<HTMLSpanElement>(null);
+  const imageRef = useRef<HTMLDivElement>(null);
   const [isTypingComplete, setIsTypingComplete] = React.useState(false);
 
   useEffect(() => {
@@ -76,11 +78,34 @@ const HeroSection = () => {
       });
     }
 
+    // Animate the image in after a short delay
+    const imageTl = gsap.timeline({ delay: 2 });
+    imageTl.fromTo(
+      imageRef.current,
+      { x: 300, opacity: 0, scale: 0 },
+      {
+        x: -100,
+        opacity: 1,
+        scale: 1,
+        duration: 1,
+        ease: 'power2.out',
+        stagger: 0.2,
+        // scrollTrigger: {
+        //   trigger: sectionRef.current,
+        //   start: 'top bottom',
+        //   toggleActions: 'play none none none',
+        //   id: 'image-animation'
+        // }
+      }
+    );
+    
     return () => {
       ScrollTrigger.getById('header-scroll')?.kill();
+      // ScrollTrigger.getById('image-animation')?.kill();
       if (typed) {
         typed.destroy();
       }
+      imageTl.kill();
     };
   }, []);
 
@@ -105,6 +130,20 @@ const HeroSection = () => {
 
       {/* Content */}
       <div className="flex flex-col items-center justify-end h-full pb-16 md:pb-24 relative z-10 px-4 sm:px-6 w-full">
+        {/* Floating Image - Desktop Only */}
+        <div 
+          ref={imageRef}
+          className="hidden xl:block absolute mb-5 right-8 top-2/5 md:-translate-y-3/5 xl:-translate-y-1/2 z-20 w-64 h-64 rounded-full overflow-hidden border-4 border-white/20 shadow-2xl hover:scale-105"
+        >
+          <Image
+            src="/me.png"
+            alt="Khalid Walker-Mohamed"
+            width={256}
+            height={256}
+            className="w-full h-full object-cover"
+            priority
+          />
+        </div>
         <h1
           className="absolute text-8xl top-1/4 md:top-2/5 md:-translate-y-1/2 w-full max-w-[90%]"
           style={{
@@ -118,7 +157,7 @@ const HeroSection = () => {
             <span className="text-3xl sm:text-4xl mb-2">Hello my name is,</span>
             <div className="relative w-full">
               <div className="relative inline-block">
-                <span className="md:text-8xl xs:text-6xl text-4xl">
+                <span className="2xl:text-8xl md:text-7xl sm:text-6xl">
                   <span
                     ref={typedRef}
                     className="inline-block"
@@ -134,7 +173,7 @@ const HeroSection = () => {
                   />
                   <span
                     ref={cursorRef}
-                    className="typed-cursor text-5xl xs:text-6xl md:text-8xl"
+                    className="typed-cursor xl:text-8xl md:text-7xl sm:text-6xl text-4xl"
                     style={{
                       display: isTypingComplete ? 'none' : 'inline-block',
                       opacity: isTypingComplete ? 0 : 1,

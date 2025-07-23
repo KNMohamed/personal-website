@@ -14,16 +14,16 @@ export default function Home() {
     if (!gradientRef.current) return;
 
     // Animate gradient background
-    const gradientTl = gsap.timeline({ repeat: -1, yoyo: true });
-    gradientTl.to(gradientRef.current, {
-      backgroundPosition: '90% 50%',
-      duration: 4,
-      ease: 'none',
-    });
+    // const gradientTl = gsap.timeline({ repeat: -1, yoyo: true });
+    // gradientTl.to(gradientRef.current, {
+    //   backgroundPosition: '90% 50%',
+    //   duration: 4,
+    //   ease: 'none',
+    // });
 
     // Cleanup function
     return () => {
-      gradientTl.kill();
+      // gradientTl.kill();
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
   }, []);

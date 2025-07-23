@@ -1,18 +1,15 @@
 'use client';
 
-import { useRef, useEffect } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import TimelineItem, { TimelineItemProps } from './TimelineItem';
 
-type TimelineItem = {
-  id: number;
-  company: string;
-  role: string;
-  duration: string;
-  description: string[];
-};
+// Register ScrollTrigger plugin
+gsap.registerPlugin(ScrollTrigger);
 
-const timelineData: TimelineItem[] = [
+// Timeline data
+const timelineData: Omit<TimelineItemProps, 'alignLeft' | 'ref'>[] = [
   {
     id: 1,
     company: 'Your Current/Most Recent Company',
@@ -51,9 +48,9 @@ const timelineData: TimelineItem[] = [
 const TimelineSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const timelineRefs = useRef<Array<HTMLDivElement | null>>([]);
-  // Use a ref to store the ScrollTrigger instances created within this component
   const createdScrollTriggers = useRef<ScrollTrigger[]>([]);
 
+  // Clear refs on unmount
   useEffect(() => {
     // Ensure we have the sectionRef before creating ScrollTriggers
     if (!sectionRef.current) return;
@@ -61,7 +58,7 @@ const TimelineSection = () => {
     // Clear any previously created ScrollTriggers for this component on re-render
     // This is safer than killing ALL ScrollTriggers
     createdScrollTriggers.current.forEach((trigger) => trigger.kill());
-    createdScrollTriggers.current = []; // Reset the array
+    createdScrollTriggers.current = [];
 
     // Animate each timeline item
     timelineRefs.current.forEach((el, index) => {
@@ -85,15 +82,16 @@ const TimelineSection = () => {
           },
         },
       );
-      createdScrollTriggers.current.push(st.scrollTrigger as ScrollTrigger); // Store the created ScrollTrigger instance
+      createdScrollTriggers.current.push(st.scrollTrigger as ScrollTrigger);
     });
 
     // Cleanup function: Kill only the ScrollTriggers created by this component
     return () => {
       createdScrollTriggers.current.forEach((trigger) => trigger.kill());
+      timelineRefs.current = [];
       createdScrollTriggers.current = []; // Clear the array on unmount
     };
-  }, []); // Empty dependency array ensures this effect runs only once on mount
+  }, []);
 
   return (
     <section
@@ -111,47 +109,22 @@ const TimelineSection = () => {
           <div className="absolute left-4 md:left-1/2 h-full w-0.5 bg-gray-200 transform -translate-x-1/2"></div>
 
           <div className="space-y-32">
-            {timelineData.map((item, index) => (
-              <div
-                key={item.id}
-                ref={(el) => {
-                  if (el) {
+            {timelineData.map((item, index) => {
+              const isLeftAligned = index % 2 === 0;
+              return (
+                <div
+                  key={item.id}
+                  ref={(el: HTMLDivElement | null) => {
                     timelineRefs.current[index] = el;
-                  }
-                }}
-                className={`relative flex ${index % 2 === 0 ? 'justify-start' : 'justify-end'}`}
-              >
-                <div className="w-full md:w-1/2 px-8">
-                  <div className="relative bg-white p-8 rounded-lg border-2 border-gray-200 shadow-lg hover:shadow-xl transition-shadow duration-300">
-                    {/* Number badge */}
-                    <div className="absolute -top-6 -left-6 w-12 h-12 bg-gradient-to-br from-tertiary to-quinary rounded-full flex items-center justify-center text-white font-bold text-xl shadow-md">
-                      {item.id}
-                    </div>
-
-                    {/* Timeline content */}
-                    <div className="ml-4">
-                      <div className="flex flex-col md:flex-row md:items-center justify-between mb-4">
-                        <h3 className="text-2xl font-bold text-gray-900">
-                          {item.company}
-                        </h3>
-                        <span className="text-tertiary font-medium">
-                          {item.duration}
-                        </span>
-                      </div>
-                      <h4 className="text-xl text-quinary mb-4">{item.role}</h4>
-                      <ul className="space-y-2">
-                        {item.description.map((desc, i) => (
-                          <li key={i} className="flex items-start">
-                            <span className="text-tertiary mr-2 mt-1">•</span>
-                            <span className="text-gray-700">{desc}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
+                  }}
+                >
+                  <TimelineItem
+                    {...item}
+                    alignLeft={isLeftAligned}
+                  />
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </div>

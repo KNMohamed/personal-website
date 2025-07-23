@@ -91,7 +91,7 @@ const HeroSection = () => {
     >
       {/* Fixed container for the header text */}
       <div ref={headerContainerRef}>
-        <div ref={headerTextRef} className="text-2xl font-medium text-black">
+        <div ref={headerTextRef} className="md:text-2xl text-xl font-medium text-black">
           Senior Full Stack Software Engineer
         </div>
       </div>
@@ -115,10 +115,10 @@ const HeroSection = () => {
           }}
         >
           <div className="flex flex-col w-full">
-            <span className="text-4xl md:text-5xl mb-2">Hello my name is,</span>
+            <span className="text-3xl sm:text-4xl mb-2">Hello my name is,</span>
             <div className="relative w-full">
               <div className="relative inline-block">
-                <span className="text-6xl md:text-8xl">
+                <span className="md:text-8xl xs:text-6xl text-4xl">
                   <span
                     ref={typedRef}
                     className="inline-block"
@@ -134,7 +134,7 @@ const HeroSection = () => {
                   />
                   <span
                     ref={cursorRef}
-                    className="typed-cursor text-6xl md:text-8xl"
+                    className="typed-cursor text-5xl xs:text-6xl md:text-8xl"
                     style={{
                       display: isTypingComplete ? 'none' : 'inline-block',
                       opacity: isTypingComplete ? 0 : 1,
@@ -190,16 +190,16 @@ const HeroSection = () => {
         </div>
         <button
           onClick={() => {
-            const nextSection = document.getElementById('about');
+            const nextSection = document.getElementById('experience');
             if (nextSection) {
               nextSection.scrollIntoView({ behavior: 'smooth' });
             }
           }}
-          className="absolute bottom-8 animate-bounce cursor-pointer hover:opacity-80 transition-opacity"
+          className="absolute md:bottom-4 lg:bottom-8 bottom-1 animate-bounce cursor-pointer hover:opacity-80 transition-opacity"
           aria-label="Scroll to next section"
         >
           <svg
-            className="w-8 h-8 text-white"
+            className="md:w-8 md:h-8 w-6 h-6 text-white"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"

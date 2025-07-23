@@ -29,9 +29,9 @@ const BubbleContainer: React.FC<BubbleContainerProps> = ({
       id: Math.random().toString(36).substring(2, 11),
       x: Math.random() * 98 + 1,
       y: 110, // Start from bottom
-      size: Math.random() * 120 + 60, // 20-50px
+      size: Math.random() * 120 + 60,
       color: colors[Math.floor(Math.random() * colors.length)],
-      duration: Math.random() * 4 + 5, // 8-13 seconds
+      duration: Math.random() * 4 + 5,
       delay: 2,
     };
     console.log('Generated bubble:', bubble);

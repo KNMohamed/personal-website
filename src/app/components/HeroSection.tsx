@@ -133,7 +133,7 @@ const HeroSection = () => {
         {/* Floating Image - Desktop Only */}
         <div 
           ref={imageRef}
-          className="hidden xl:block absolute mb-5 right-8 top-2/5 md:-translate-y-3/5 xl:-translate-y-1/2 z-20 w-64 h-64 rounded-full overflow-hidden border-4 border-white/20 shadow-2xl hover:scale-105"
+          className="hidden xl:block absolute mb-5 right-10 top-2/5 md:-translate-y-3/5 xl:-translate-y-1/2 z-20 w-64 h-64 rounded-full overflow-hidden border-4 border-quinary/20 shadow-xl hover:scale-105"
         >
           <Image
             src="/me.png"
@@ -157,7 +157,7 @@ const HeroSection = () => {
             <span className="text-3xl sm:text-4xl mb-2">Hello my name is,</span>
             <div className="relative w-full">
               <div className="relative inline-block">
-                <span className="2xl:text-8xl md:text-7xl sm:text-6xl">
+                <span className="2xl:text-8xl md:text-7xl sm:text-6xl text-4xl">
                   <span
                     ref={typedRef}
                     className="inline-block"

@@ -38,7 +38,7 @@ const neueMontreal = localFont({
       style: 'italic',
     },
     {
-      path: '../../public/fonts/PPNeueMontreal-SemiBoldItalic.otf',
+      path: '../../public/fonts/PPNeueMontreal-SemiBolditalic.otf',
       weight: '600', // SemiBold weight
       style: 'italic', // Italic style
     },

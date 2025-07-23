@@ -7,23 +7,22 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 export default function Home() {
-  const sectionRef = useRef<HTMLDivElement>(null);
   const gradientRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!gradientRef.current) return;
 
     // Animate gradient background
-    // const gradientTl = gsap.timeline({ repeat: -1, yoyo: true });
-    // gradientTl.to(gradientRef.current, {
-    //   backgroundPosition: '90% 50%',
-    //   duration: 4,
-    //   ease: 'none',
-    // });
+    const gradientTl = gsap.timeline({ repeat: -1, yoyo: true });
+    gradientTl.to(gradientRef.current, {
+      backgroundPosition: '90% 50%',
+      duration: 4,
+      ease: 'none',
+    });
 
     // Cleanup function
     return () => {
-      // gradientTl.kill();
+      gradientTl.kill();
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
   }, []);
@@ -47,7 +46,7 @@ export default function Home() {
         <TimelineSection />
 
         {/* About Section */}
-        <section
+        {/* <section
           ref={sectionRef}
           id="about"
           className="min-h-screen flex items-center justify-center relative p-8 bg-white"
@@ -55,11 +54,11 @@ export default function Home() {
           <div className="text-center">
             <h2 className="text-4xl font-bold mb-8">About Me</h2>
           </div>
-        </section>
+        </section> */}
       </main>
-      <section className="h-screen flex items-center justify-center text-4xl font-bold rounded-lg shadow-lg m-4 p-8">
+      {/* <section className="h-screen flex items-center justify-center text-4xl font-bold rounded-lg shadow-lg m-4 p-8">
         <h1>More Content Below</h1>
-      </section>
+      </section> */}
     </div>
   );
 }

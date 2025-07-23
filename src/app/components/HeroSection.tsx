@@ -141,7 +141,7 @@ const HeroSection = () => {
             width={256}
             height={256}
             className="w-full h-full object-cover"
-            priority
+            loading="lazy"
           />
         </div>
         <h1
@@ -154,7 +154,7 @@ const HeroSection = () => {
           }}
         >
           <div className="flex flex-col w-full">
-            <span className="text-3xl sm:text-4xl mb-2">Hello my name is,</span>
+            <span className="text-3xl sm:text-4xl mb-2">Hello, my name is</span>
             <div className="relative w-full">
               <div className="relative inline-block">
                 <span className="2xl:text-8xl md:text-7xl sm:text-6xl text-4xl">

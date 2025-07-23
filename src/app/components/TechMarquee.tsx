@@ -87,6 +87,10 @@ const technologies = [
     name: 'Java', 
     logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original-wordmark.svg' 
   },
+  { 
+    name: 'GraphQL', 
+    logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/graphql/graphql-plain.svg' 
+  },
 ];
 
 const TechMarquee = () => {

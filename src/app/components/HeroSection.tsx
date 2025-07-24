@@ -211,7 +211,7 @@ const HeroSection = () => {
           <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 w-full">
             <Button asChild size="lg">
               <a
-                href="#contact"
+                href="mailto:khalid.n.mohamed@outlook.com"
                 className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-quaternary text-white font-medium rounded-lg hover:bg-quinary transition-colors text-sm sm:text-base"
               >
                 Get In Touch
@@ -219,7 +219,9 @@ const HeroSection = () => {
             </Button>
             <Button asChild size="lg">
               <a
-                href="#work"
+                href="https://github.com/KNMohamed"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 border-2 border-quaternary text-white font-medium rounded-lg hover:bg-quaternary transition-colors text-sm sm:text-base"
               >
                 View My Work
